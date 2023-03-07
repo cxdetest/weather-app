@@ -29,7 +29,7 @@ const Result = ({ location }) => {
 
   return (
     <>
-      {loading || result.length > 0 ? (
+      {loading ? (
         <span className='loading'>loading...</span>
       ) : (
         <>
