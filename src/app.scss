@@ -27,26 +27,34 @@ body {
     gap: 15px 0;
     height: calc(100vh - 98px);
 
-    input {
-      padding: 10px;
-      border-radius: 5px;
-      width: 400px;
-      font-size: 17px;
-    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
 
-    @media screen and (max-width: 768px) {
       input {
-        width: 80vw;
+        padding: 10px;
+        border-radius: 5px;
+        width: 400px;
+        font-size: 17px;
       }
-    }
 
-    button {
-      background: rgb(62, 63, 63);
-      color: aliceblue;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
+      @media screen and (max-width: 768px) {
+        input {
+          width: 80vw;
+        }
+      }
+
+      button {
+        background: rgb(62, 63, 63);
+        color: aliceblue;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
     }
   }
 }
