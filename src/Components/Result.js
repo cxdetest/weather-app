@@ -1,35 +1,29 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const Result = ({ location }) => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
-  const weather = useCallback(() => {
-    axios
-      .get(
-        `http://api.weatherapi.com/v1/current.json?key=947820c034c44e83981215819232502&q=${location}&aqi=no`
-      )
-      .then(function (res) {
-        setResult(res.data);
-      });
-  }, [location]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
 
-    weather();
+    fetch(
+      `http://api.weatherapi.com/v1/current.json?key=947820c034c44e83981215819232502&q=${location}&aqi=no`
+    )
+      .then((res) => res.json())
+      .then((res) => setResult(res));
 
     return () => {
       setLoading(true);
       clearTimeout(timer);
     };
-  }, [weather]);
+  }, [location]);
 
   return (
     <>
-      {loading ? (
+      {loading || result === undefined ? (
         <span className='loading'>loading...</span>
       ) : (
         <>
